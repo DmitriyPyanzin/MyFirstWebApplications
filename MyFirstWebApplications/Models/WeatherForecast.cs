@@ -1,4 +1,6 @@
-﻿namespace MyFirstWebApplications.Models
+﻿using System.Data;
+
+namespace MyFirstWebApplications.Models
 {
     /// <summary>
     /// Прогноз погоды Forecast
@@ -9,11 +11,6 @@
         /// Дата измерения
         /// </summary>
         public DateTime Date { get; set; }
-
-        /// <summary>
-        /// Время изменения
-        /// </summary>
-        public TimeOnly time { get; set; }
 
         /// <summary>
         /// Температура в градусах Цельсия

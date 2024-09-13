@@ -31,6 +31,23 @@ namespace MyFirstWebApplications.Models
         }
 
         /// <summary>
+        /// Получить показатели температуры за временной период
+        /// </summary>
+        /// <param name="dateFrom">Начальная дата</param>
+        /// <param name="dateTo">Конечная дата</param>
+        /// <returns>Коллекция показателей температуры</returns>
+        public List<WeatherForecast> Get(DateTime dateFrom, DateTime dateTo)
+        {
+            List<WeatherForecast> list = new List<WeatherForecast>();
+            foreach (WeatherForecast item in _values)
+            {
+                if (item.Date >= dateFrom && item.Date <= dateTo)
+                    list.Add(item);
+            }
+            return list;
+        }
+
+        /// <summary>
         /// Обновить показатель температуры
         /// </summary>
         /// <param name="date">Дата фиксации показания температуры</param>
@@ -49,22 +66,6 @@ namespace MyFirstWebApplications.Models
             return false;
         }
 
-        /// <summary>
-        /// Получить показатели температуры за временной период
-        /// </summary>
-        /// <param name="dateFrom">Начальная дата</param>
-        /// <param name="dateTo">Конечная дата</param>
-        /// <returns>Коллекция показателей температуры</returns>
-        public List<WeatherForecast> Get(DateTime dateFrom, DateTime dateTo)
-        {
-            List<WeatherForecast> list = new List<WeatherForecast>();
-            foreach (WeatherForecast item in _values)
-            {
-                if (item.Date >= dateFrom && item.Date <= dateTo)
-                    list.Add(item);
-            }
-            return list;
-        }
 
         /// <summary>
         /// Удалить показатель температуры на дату
@@ -72,7 +73,7 @@ namespace MyFirstWebApplications.Models
         /// <param name="date">Дата фиксации показателя температуры</param>
         /// <returns>Результат выполнения операции</returns>
         public bool Delete(DateTime date)
-        {
+        {           
             return false;
         }
     }
