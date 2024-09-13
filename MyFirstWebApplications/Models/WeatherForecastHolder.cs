@@ -21,7 +21,7 @@ namespace MyFirstWebApplications.Models
         /// </summary>
         /// <param name="dateTime">Дата фиксации показателя температуры</param>
         /// <param name="temperatureC">Показатель температуры</param>
-        public void Add(DateTime dateTime, int temperatureC) 
+        public void Add(DateTime dateTime, int temperatureC)
         {
             WeatherForecast forecast = new WeatherForecast();
             forecast.TemperatureC = temperatureC;
@@ -73,8 +73,17 @@ namespace MyFirstWebApplications.Models
         /// <param name="date">Дата фиксации показателя температуры</param>
         /// <returns>Результат выполнения операции</returns>
         public bool Delete(DateTime date)
-        {           
+        {
+            foreach (WeatherForecast item in _values)
+            {
+                if (item.Date == date)
+                {
+                    _values.Remove(item);
+                    return true;
+                }
+            }
             return false;
         }
     }
 }
+

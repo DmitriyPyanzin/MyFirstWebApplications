@@ -40,6 +40,7 @@ namespace MyFirstWebApplications.Controllers
         [HttpDelete("delete")]
         public IActionResult Delete([FromQuery] DateTime date)
         {
+            _weatherForecastHolder.Delete(date);
             return Ok();
         }
 
